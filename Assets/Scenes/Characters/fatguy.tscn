@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3hxfunti4kwm"]
+
+[ext_resource type="PackedScene" uid="uid://kv32n7pw0kmc" path="res://Assets/Scenes/Characters/npc.tscn" id="1_7ygjp"]
+[ext_resource type="Texture2D" uid="uid://crio8rw3d13tt" path="res://Assets/Art/Characters/fatguy.png" id="2_02nic"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4k4wi"]
+atlas = ExtResource("2_02nic")
+region = Rect2(0, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfqfx"]
+atlas = ExtResource("2_02nic")
+region = Rect2(0, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ld3g"]
+atlas = ExtResource("2_02nic")
+region = Rect2(24, 0, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2i2e6"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4k4wi")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfqfx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ld3g")
+}],
+"loop": true,
+"name": &"talking",
+"speed": 6.0
+}]
+
+[node name="Node2D" instance=ExtResource("1_7ygjp")]
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_2i2e6")

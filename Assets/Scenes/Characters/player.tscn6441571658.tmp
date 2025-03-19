@@ -1,0 +1,151 @@
+[gd_scene load_steps=12 format=3 uid="uid://cor7m8dauj28y"]
+
+[ext_resource type="Texture2D" uid="uid://e61pbu82m6yb" path="res://Assets/Art/Characters/cowboy_guy.png" id="1_4flbx"]
+
+[sub_resource type="GDScript" id="GDScript_2cnp0"]
+script/source = "extends Character
+
+enum DIRECTION { LEFT, RIGHT, UP, DOWN }
+const SPEED = 70
+var dir = DIRECTION.DOWN
+@onready var player: CharacterBody2D = $Player
+@onready var animated_sprite_2d: AnimatedSprite2D = $Player/AnimatedSprite2D
+
+func _physics_process(delta: float) -> void:
+	if action != ACTION.TALK:
+		player_movement(delta)	
+	play_animation()
+
+func player_movement(_delta):
+	player.velocity.x = 0
+	player.velocity.y = 0
+	action = ACTION.IDLE
+	if Input.is_action_pressed(\"right\"):
+		player.velocity.x = SPEED
+		action = ACTION.WALK
+		dir = DIRECTION.RIGHT
+
+	if Input.is_action_pressed(\"left\"):
+		action = ACTION.WALK
+		player.velocity.x = -SPEED
+		dir = DIRECTION.LEFT
+
+	if Input.is_action_pressed(\"up\"):
+		action = ACTION.WALK
+		player.velocity.y = -SPEED
+		
+	if Input.is_action_pressed(\"down\"):
+		action = ACTION.WALK
+		player.velocity.y = SPEED
+	player.move_and_slide()
+	
+func play_animation():
+	match action:
+		ACTION.WALK:
+			match dir:
+				DIRECTION.RIGHT:
+					animated_sprite_2d.play(\"walk\")
+					animated_sprite_2d.flip_h = true
+				DIRECTION.LEFT:
+					animated_sprite_2d.play(\"walk\")
+					animated_sprite_2d.flip_h = false
+				_:
+					animated_sprite_2d.play(\"walk\")
+		ACTION.TALK:
+			animated_sprite_2d.play(\"talking\")
+		ACTION.IDLE:
+			animated_sprite_2d.play(\"idle\")
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7elgb"]
+atlas = ExtResource("1_4flbx")
+region = Rect2(0, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54u17"]
+atlas = ExtResource("1_4flbx")
+region = Rect2(0, 32, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mye6i"]
+atlas = ExtResource("1_4flbx")
+region = Rect2(24, 32, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
+atlas = ExtResource("1_4flbx")
+region = Rect2(0, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
+atlas = ExtResource("1_4flbx")
+region = Rect2(24, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
+atlas = ExtResource("1_4flbx")
+region = Rect2(48, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sweqy"]
+atlas = ExtResource("1_4flbx")
+region = Rect2(72, 0, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2hs0m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7elgb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54u17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mye6i")
+}],
+"loop": true,
+"name": &"talking",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onrkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3pqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqtel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sweqy")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1jxqw"]
+radius = 1.0
+height = 4.0
+
+[node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_2cnp0")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+y_sort_enabled = true
+collision_layer = 3
+collision_mask = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_2hs0m")
+animation = &"talking"
+frame_progress = 0.34245
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(1, 2)
+shape = SubResource("CapsuleShape2D_1jxqw")

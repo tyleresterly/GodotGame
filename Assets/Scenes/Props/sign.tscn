@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cccioq6sbo4sy"]
+
+[ext_resource type="Texture2D" uid="uid://cfsm6dk11g31m" path="res://Assets/Art/Tilesets/DESERTV2++.png" id="1_bgjkt"]
+[ext_resource type="PackedScene" uid="uid://kv32n7pw0kmc" path="res://Assets/Scenes/Characters/npc.tscn" id="1_nvp6u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpuka"]
+atlas = ExtResource("1_bgjkt")
+region = Rect2(96, 288, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4o8vd"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpuka")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="sign" instance=ExtResource("1_nvp6u")]
+z_index = 1
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_4o8vd")
+animation = &"idle"

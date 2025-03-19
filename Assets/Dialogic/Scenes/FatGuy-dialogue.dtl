@@ -1,0 +1,4 @@
+join FatGuy center
+join "Cowboy Dan" center [animation="Fade In"]
+FatGuy: Sup I'm a fat guy
+"Cowboy Dan": Hell Yeah

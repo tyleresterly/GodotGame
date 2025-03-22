@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://bnfcfiwkaxi7n"]
+
+[ext_resource type="Script" uid="uid://brs71od4irkyo" path="res://battle_test.gd" id="1_sgicm"]
+[ext_resource type="PackedScene" uid="uid://hf8kl0w3ukdr" path="res://Assets/Scenes/Characters/bird_ninja.tscn" id="2_xy0pa"]
+[ext_resource type="Script" uid="uid://cnba5s7t3m2cf" path="res://Assets/Scripts/Characters/entity_stats.gd" id="3_xy0pa"]
+[ext_resource type="PackedScene" uid="uid://cor7m8dauj28y" path="res://Assets/Scenes/Characters/player.tscn" id="4_0n8ee"]
+[ext_resource type="Texture2D" uid="uid://b27y3vitxff6s" path="res://Assets/Art/Characters/birdninja.png" id="4_r2d6b"]
+
+[sub_resource type="Resource" id="Resource_ipw8j"]
+script = ExtResource("3_xy0pa")
+base_max_health = 100
+base_attack = 10
+speed = 10
+metadata/_custom_type_script = "uid://dauurqo8efco4"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vu4xf"]
+atlas = ExtResource("4_r2d6b")
+region = Rect2(0, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg525"]
+atlas = ExtResource("4_r2d6b")
+region = Rect2(0, 32, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gmgo"]
+atlas = ExtResource("4_r2d6b")
+region = Rect2(24, 32, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyhog"]
+atlas = ExtResource("4_r2d6b")
+region = Rect2(48, 32, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0n8ee"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vu4xf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg525")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gmgo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyhog")
+}],
+"loop": true,
+"name": &"talking",
+"speed": 6.0
+}]
+
+[sub_resource type="Resource" id="Resource_nl0ii"]
+script = ExtResource("3_xy0pa")
+base_max_health = 110
+base_attack = 10
+speed = 12
+metadata/_custom_type_script = "uid://dauurqo8efco4"
+
+[node name="Test" type="Node2D"]
+script = ExtResource("1_sgicm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(671, 457)
+zoom = Vector2(4, 4)
+
+[node name="BirdNinja" parent="." instance=ExtResource("2_xy0pa")]
+position = Vector2(518, 451)
+stats = SubResource("Resource_ipw8j")
+has_animations = true
+
+[node name="AnimatedSprite2D" parent="BirdNinja" index="2"]
+sprite_frames = SubResource("SpriteFrames_0n8ee")
+
+[node name="Player" parent="." instance=ExtResource("4_0n8ee")]
+position = Vector2(840, 466)
+stats = SubResource("Resource_nl0ii")
+has_animations = true
+
+[editable path="BirdNinja"]
+[editable path="Player"]

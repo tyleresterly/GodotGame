@@ -1,0 +1,6 @@
+join BirdNinja center
+join "Cowboy Dan" center
+BirdNinja: It's fight time buster
+- Okay
+	[signal arg="bird_fight_start"]
+- No

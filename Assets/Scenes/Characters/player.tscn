@@ -74,30 +74,22 @@ animations = [{
 radius = 1.0
 height = 4.0
 
-[node name="Node2D" type="Node2D"]
-y_sort_enabled = true
-script = ExtResource("1_7elgb")
-
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D"]
+z_index = 1
 y_sort_enabled = true
 collision_layer = 3
 collision_mask = 3
+script = ExtResource("1_7elgb")
 
-[node name="InteractionAvailable" type="Label" parent="Player"]
-visible = false
+[node name="InteractionAvailable" type="Label" parent="."]
 z_index = 1
 y_sort_enabled = true
 offset_left = -2.0
 offset_top = -44.0
 offset_right = 38.0
 offset_bottom = -21.0
-text = "!"
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, -13)
-zoom = Vector2(4, 4)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(0, -7)
@@ -106,7 +98,7 @@ animation = &"talking"
 frame_progress = 0.34245
 offset = Vector2(0, -5)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(1, -3)

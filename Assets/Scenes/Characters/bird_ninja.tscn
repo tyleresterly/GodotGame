@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://hf8kl0w3ukdr"]
+
+[ext_resource type="PackedScene" uid="uid://kv32n7pw0kmc" path="res://Assets/Scenes/Characters/npc.tscn" id="1_i53r6"]
+[ext_resource type="Texture2D" uid="uid://b27y3vitxff6s" path="res://Assets/Art/Characters/birdninja.png" id="2_qvvbk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vu4xf"]
+atlas = ExtResource("2_qvvbk")
+region = Rect2(0, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg525"]
+atlas = ExtResource("2_qvvbk")
+region = Rect2(0, 32, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gmgo"]
+atlas = ExtResource("2_qvvbk")
+region = Rect2(24, 32, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyhog"]
+atlas = ExtResource("2_qvvbk")
+region = Rect2(48, 32, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5fwvx"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vu4xf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg525")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gmgo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyhog")
+}],
+"loop": true,
+"name": &"talking",
+"speed": 6.0
+}]
+
+[node name="BirdNinja" instance=ExtResource("1_i53r6")]
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_5fwvx")
+animation = &"idle"

@@ -1,12 +1,8 @@
 extends Node2D
 
-class_name Character
+class_name Entity
 @export var char_name: String
-@export var stats = {
-	"HP": 0,
-	"Strength": 0,
-	"Speed": 0,
-}
+@export var stats: EntityStats
 @export var has_animations: bool = false
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 

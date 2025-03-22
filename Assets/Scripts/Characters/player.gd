@@ -1,12 +1,11 @@
-extends Character
-
-class_name Player
+class_name Player extends Entity
 const SPEED = 70
 var dir = DIRECTION.DOWN
+@onready var player: Player = $"."
 @onready var interaction_available: Label = $InteractionAvailable
-@onready var player: CharacterBody2D = $Player
-@onready var sprite_custom: AnimatedSprite2D = $Player/AnimatedSprite2D
 
+func _ready() -> void:
+	sprite = $AnimatedSprite2D
 func _physics_process(delta: float) -> void:
 	if action != ACTION.TALK:
 		player_movement(delta)	
@@ -40,24 +39,24 @@ func on_talk():
 func on_end_talk():
 	action = ACTION.IDLE
 
-func on_can_interact():
+func on_can_interact(_body: Node2D):
 	interaction_available.visible = true
 	
-func on_cant_interact():
+func on_cant_interact(_body: Node2D):
 	interaction_available.visible = false
 func play_animation():
 	match action:
 		ACTION.WALK:
 			match dir:
 				DIRECTION.RIGHT:
-					sprite_custom.play("walk")
-					sprite_custom.flip_h = true
+					sprite.play("walk")
+					sprite.flip_h = true
 				DIRECTION.LEFT:
-					sprite_custom.play("walk")
-					sprite_custom.flip_h = false
+					sprite.play("walk")
+					sprite.flip_h = false
 				_:
-					sprite_custom.play("walk")
+					sprite.play("walk")
 		ACTION.TALK:
-			sprite_custom.play("talking")
+			sprite.play("talking")
 		ACTION.IDLE:
-			sprite_custom.play("idle")
+			sprite.play("idle")

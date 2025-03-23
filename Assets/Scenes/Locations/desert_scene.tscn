@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=4 uid="uid://j0vauk7yvrpk"]
+[gd_scene load_steps=12 format=4 uid="uid://j0vauk7yvrpk"]
 
+[ext_resource type="Script" uid="uid://cjlqejcmhrr8u" path="res://Assets/Scenes/Locations/game_scene.gd" id="1_fv1mh"]
 [ext_resource type="Texture2D" uid="uid://cfsm6dk11g31m" path="res://Assets/Art/Tilesets/DESERTV2++.png" id="1_ykha2"]
 [ext_resource type="PackedScene" uid="uid://cor7m8dauj28y" path="res://Assets/Scenes/Characters/player.tscn" id="2_j82px"]
 [ext_resource type="PackedScene" uid="uid://hf8kl0w3ukdr" path="res://Assets/Scenes/Characters/bird_ninja.tscn" id="3_fv1mh"]
@@ -565,6 +566,7 @@ metadata/_custom_type_script = "uid://cnba5s7t3m2cf"
 
 [node name="DesertScene" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_fv1mh")
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = 1
@@ -593,10 +595,11 @@ position = Vector2(-21, -12)
 [node name="BirdNinja" parent="NPCs" instance=ExtResource("3_fv1mh")]
 z_index = 1
 position = Vector2(186, 219)
+char_name = "BirdMan"
 stats = SubResource("Resource_fv1mh")
 has_animations = true
 metadata/Dialogue = "BirdFight"
-metadata/FightSignal = "bird_fight_start"
+metadata/fight_signal = "bird_fight_start"
 
 [node name="FatGuy" parent="NPCs" instance=ExtResource("4_18rbd")]
 z_index = 1

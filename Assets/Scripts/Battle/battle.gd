@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 		attack_button.disabled = false
 	
 func handle_turns():
-	turn_queue.sort_custom(func(a: BattleAction, b: BattleAction): return a.entity.stats.speed < a.entity.stats.speed)
+	turn_queue.sort_custom(func(a: BattleAction, b: BattleAction): return a.entity.stats.speed < b.entity.stats.speed)
 	while(!turn_queue.is_empty()):
 		fight_timer.start()
 		var turn = turn_queue.pop_front()

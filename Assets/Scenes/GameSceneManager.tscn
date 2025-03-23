@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://iyihpoq6fah7"]
+
+[ext_resource type="Script" uid="uid://dx0dcd5857m28" path="res://Assets/Scripts/Game/GameScene/game_scene_manager.gd" id="1_w12qi"]
+[ext_resource type="PackedScene" uid="uid://j0vauk7yvrpk" path="res://Assets/Scenes/Locations/desert_scene.tscn" id="2_rgxlr"]
+
+[node name="GameSceneManager" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_w12qi")
+
+[node name="DesertScene" parent="." instance=ExtResource("2_rgxlr")]
+
+[editable path="DesertScene"]

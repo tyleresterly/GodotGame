@@ -11,12 +11,12 @@ config_version=5
 [application]
 
 config/name="DesertGame"
-run/main_scene="res://Assets/Scenes/game.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
+SceneManager="*res://addons/scene_manager/SceneManager.tscn"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
@@ -30,6 +30,7 @@ directories/dch_directory={
 directories/dtl_directory={
 "BirdFight": "res://Assets/Dialogic/Characters/BirdFight.dtl",
 "FatGuy-talk": "res://Assets/Dialogic/Scenes/FatGuy-dialogue.dtl",
+"bird_fight_for_real": "res://Assets/Dialogic/Styles/bird_fight_for_real.dtl",
 "test": "res://Assets/Dialogic/Scenes/test.dtl"
 }
 layout/style_list=[]
@@ -51,6 +52,11 @@ choices/reveal_by_input=false
 save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/autopauses={}
+animations/join_default_length=0.5
+animations/join_default_wait=true
+animations/leave_default_length=0.5
+animations/leave_default_wait=true
+animations/cross_fade_default_length=0.5
 
 [display]
 

@@ -1,11 +1,17 @@
 extends Node2D
-@onready var npcs_node: Node2D = $DesertScene/NPCs
-@onready var player: Player = $DesertScene/Player
+
+class_name GameSceneManager
+var game_scene: GameScene
+var npcs: Array[Entity]
+var player: Player
+
+func _init(scene: GameScene):
+	game_scene = scene
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var npcs: Array[Node] = npcs_node.get_children()
+	var npcs: Array[Entity] = game_scene.npcs
 	for npc in npcs:
 		if npc.has_signal("on_talk_to_npc"):
 			npc.connect("on_talk_to_npc", player.on_talk)

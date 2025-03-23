@@ -42,5 +42,7 @@ func _on_interact_zone_body_exited(body: Node2D) -> void:
 		interactable = false
 		
 func _on_dialogic_signal(argument: String):
-	if argument == get_meta("FightSignal"):
+	print(get_meta("fight_signal"), argument)
+	if has_meta("fight_signal") and argument == get_meta("fight_signal"):
+		print("here")
 		on_fight_npc.emit()

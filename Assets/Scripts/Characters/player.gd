@@ -5,6 +5,7 @@ var dir = DIRECTION.DOWN
 @onready var interaction_available: Label = $InteractionAvailable
 
 func _ready() -> void:
+	print("INSTANTIATE")
 	sprite = $AnimatedSprite2D
 func _physics_process(delta: float) -> void:
 	if action != ACTION.TALK:

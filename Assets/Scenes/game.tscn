@@ -1,12 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://iyihpoq6fah7"]
+[gd_scene load_steps=2 format=3 uid="uid://cknr7w6newasc"]
 
-[ext_resource type="Script" uid="uid://dx0dcd5857m28" path="res://Assets/Scenes/game.gd" id="1_pb48a"]
-[ext_resource type="PackedScene" uid="uid://j0vauk7yvrpk" path="res://Assets/Scenes/Locations/desert_scene.tscn" id="2_pfbgl"]
+[ext_resource type="Script" uid="uid://dsd0l1lb67bny" path="res://Assets/Scripts/Game/game.gd" id="1_cycvv"]
 
 [node name="Game" type="Node2D"]
-y_sort_enabled = true
-script = ExtResource("1_pb48a")
-
-[node name="DesertScene" parent="." instance=ExtResource("2_pfbgl")]
-
-[editable path="DesertScene"]
+script = ExtResource("1_cycvv")
